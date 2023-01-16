@@ -1,4 +1,4 @@
-
+# GIT commands
 
 1. git init (initialise a local git repo)
 2. git add * (add all files to be staged to commit to local repo)
@@ -8,4 +8,4 @@
 6. git branch -m main (switch from existing master to main)
 7. git remote add origin https://... 
 8. git push -u origin main (origin refers to remote repo)
-9. git pull 
+9. git pull
