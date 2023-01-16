@@ -23,6 +23,11 @@ public class BankAccount {
         this.accountEndDate = accountEndDate;
     }
 
+    public BankAccount(String accountNo, double balance) {
+        this.accountNo = accountNo;
+        this.balance = balance;
+    }
+
     // getters and setters 
     public String getAccountNo() {return accountNo;}
     public String getFullName() {return fullName;}
@@ -34,6 +39,41 @@ public class BankAccount {
     public Date getAccountStartDate() {return accountStartDate;}
     public void setAccountStartDate(Date accountStartDate) {this.accountStartDate = accountStartDate;}
     public Date getAccountEndDate() {return accountEndDate;}
-    public void setAccountEndDate(Date accountEndDate) {this.accountEndDate = accountEndDate;} 
+    public void setAccountEndDate(Date accountEndDate) {this.accountEndDate = accountEndDate;}
+
+    public void showAccount() {
+        System.out.println("Account No: " + accountNo);
+        System.out.println("Fullname: " + fullName);
+        System.out.println("Balance: " + balance);
+    }
+
+    @Override
+    public String toString() {
+        return "BankAccount [accountNo=" + accountNo + ", fullName=" + fullName + ", balance=" + balance + ", isActive="
+                + isActive + ", accountStartDate=" + accountStartDate + ", accountEndDate=" + accountEndDate + "]";
+    } 
+
+    // methods 
+    public void deposit(double amount) {
+        if (!isActive) {
+            throw new IllegalArgumentException("You cannot make deposit to a closed account"); 
+        }
+        if (amount < 0 ) { 
+            throw new IllegalArgumentException("You cannot make negative deposit"); 
+        } else {
+            balance = balance + amount;
+        }
+    }
     
+    public void withdraw(double amount) {
+        if (!isActive) {
+            throw new IllegalArgumentException("You cannot make deposit to a closed account");
+        }
+        if (balance < amount) {
+            throw new IllegalArgumentException("Your balance is less than the " + amount);
+        } else {
+            balance = balance - amount; 
+        }
+    }
+        
 }
